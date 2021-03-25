@@ -2,8 +2,8 @@ import 'package:chat_it/screens/Chat_Screen.dart';
 import 'package:chat_it/screens/Home_Screen.dart';
 import 'package:chat_it/screens/SignIn_Screen.dart';
 import 'package:chat_it/screens/SignUp_Screen.dart';
-import 'package:chat_it/screens/starting_screen.dart';
-import 'package:chat_it/size_config.dart';
+// import 'package:chat_it/screens/starting_screen.dart';
+// import 'package:chat_it/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: ChatScreen(),
-
 
       routes: {
         SignInScreen.id: (context) => SignInScreen(),

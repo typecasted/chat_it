@@ -28,7 +28,7 @@ class HomeScreenAppBar extends StatelessWidget {
             radius: SizeConfig().width(context) * 0.07,
             backgroundImage: AssetImage('image/myPic.jpeg'),
 
-          )
+          ),
         ],
       ),
     );

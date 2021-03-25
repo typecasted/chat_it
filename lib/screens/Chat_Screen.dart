@@ -1,6 +1,6 @@
 
 
-import 'package:chat_it/Componants/componants.dart';
+
 import 'package:chat_it/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -17,13 +17,23 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       backgroundColor: Color(0xFF102535),
 
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent.shade200,
-        title: Text(
-          'Kunal Pithadiya',
-          style: textStyle.copyWith(fontSize: SizeConfig().heigth(context) * 0.03),
-        ),
+      body: Column(
+        children: [
+          SafeArea(
+            child: Container(
+              height: SizeConfig().heigth(context) * 0.1,
+              width: double.infinity,
+            ),
+          ),
+          
+          Container(
+            height: SizeConfig().heigth(context) * 0.07,
+            width: double.infinity,
+            color: Colors.white,
+          ),
+        ],
       ),
     );
+
   }
 }
