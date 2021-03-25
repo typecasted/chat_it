@@ -1,4 +1,4 @@
-import 'file:///C:/Users/Lenovo/AndroidStudioProjects/chat_it/lib/Componants/SignIn_Up%20Button.dart';
+import 'package:chat_it/Componants/Sign_In_Up_Componants/SignIn_Up%20Button.dart';
 import 'package:chat_it/Componants/componants.dart';
 import 'package:chat_it/screens/SignIn_Screen.dart';
 import 'package:chat_it/screens/SignUp_Screen.dart';

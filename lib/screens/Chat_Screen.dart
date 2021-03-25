@@ -1,7 +1,12 @@
 
 
 
+import 'file:///C:/Users/Lenovo/AndroidStudioProjects/chat_it/lib/Componants/ChatScreenComponants/chat_screen_appBar.dart';
+import 'file:///C:/Users/Lenovo/AndroidStudioProjects/chat_it/lib/Componants/ChatScreenComponants/chat_screen_chatBox_panel.dart';
+import 'file:///C:/Users/Lenovo/AndroidStudioProjects/chat_it/lib/Componants/ChatScreenComponants/chat_screen_send_message_button.dart';
+import 'file:///C:/Users/Lenovo/AndroidStudioProjects/chat_it/lib/Componants/ChatScreenComponants/chat_screen_textaField.dart';
 import 'package:chat_it/size_config.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -18,18 +23,32 @@ class _ChatScreenState extends State<ChatScreen> {
       backgroundColor: Color(0xFF102535),
 
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SafeArea(
-            child: Container(
-              height: SizeConfig().heigth(context) * 0.1,
-              width: double.infinity,
-            ),
-          ),
-          
+          ChatScreenAppBar(),
+
+
           Container(
-            height: SizeConfig().heigth(context) * 0.07,
+            height: SizeConfig().heigth(context) * 0.16,
             width: double.infinity,
-            color: Colors.white,
+
+            decoration: BoxDecoration(
+              color: Color(0xEE203545),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ChatScreenTextField(),
+                      SendMessageButton(),
+                    ],
+                  ),
+                ChatBoxOptionsPanel()
+              ],
+            ),
           ),
         ],
       ),
@@ -37,3 +56,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
   }
 }
+
+
+
+
+
+
+

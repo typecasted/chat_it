@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../size_config.dart';
+import '../../size_config.dart';
 
 class HomeScreenSearchBox extends StatelessWidget {
   const HomeScreenSearchBox({

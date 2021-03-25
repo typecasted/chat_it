@@ -1,6 +1,6 @@
-import 'package:chat_it/Componants/SignIn_Up%20Button.dart';
+import 'package:chat_it/Componants/Sign_In_Up_Componants/SignIn_Up%20Button.dart';
 import 'package:chat_it/Componants/componants.dart';
-import 'package:chat_it/Componants/inputField.dart';
+import 'file:///C:/Users/Lenovo/AndroidStudioProjects/chat_it/lib/Componants/Sign_In_Up_Componants/sign_in_up_inputField.dart';
 import 'package:chat_it/size_config.dart';
 import 'package:flutter/material.dart';
 

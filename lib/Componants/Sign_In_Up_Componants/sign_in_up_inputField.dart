@@ -2,8 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../size_config.dart';
-import 'componants.dart';
+import '../../size_config.dart';
+import '../componants.dart';
 
 class InputField extends StatelessWidget {
 
