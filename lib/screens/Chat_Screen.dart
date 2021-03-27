@@ -29,7 +29,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
 
           Container(
-            height: SizeConfig().heigth(context) * 0.16,
+            height: SizeConfig().heigth(context) * 0.2,
             width: double.infinity,
 
             decoration: BoxDecoration(
@@ -41,6 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ChatScreenTextField(),
                       SendMessageButton(),

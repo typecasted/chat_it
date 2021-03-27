@@ -11,8 +11,8 @@ class SendMessageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height :SizeConfig().heigth(context) * 0.055,
-      width: SizeConfig().heigth(context) * 0.055,
+      height : SizeConfig().heigth(context) * 0.07,
+      width : SizeConfig().heigth(context) * 0.07,
 
       decoration: BoxDecoration(
         gradient: LinearGradient(
