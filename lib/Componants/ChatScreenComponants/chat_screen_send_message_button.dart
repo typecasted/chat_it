@@ -29,6 +29,7 @@ class SendMessageButton extends StatelessWidget {
       child: IconButton(
           icon: Icon(Icons.send),
           color: Colors.white,
+          iconSize: SizeConfig().heigth(context) * 0.03,
           highlightColor: Colors.transparent,
           focusColor: Colors.transparent,
           splashColor: Colors.transparent,
