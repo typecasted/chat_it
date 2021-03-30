@@ -10,36 +10,39 @@ class ChatBoxOptionsPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(
-          Icons.emoji_emotions,
-          color: Colors.white,
-          size: SizeConfig().heigth(context) * 0.04,
-        ),
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig().heigth(context) * 0.02),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Icon(
+            Icons.emoji_emotions,
+            color: Colors.white,
+            size: SizeConfig().heigth(context) * 0.04,
+          ),
 
-        Icon(
-          Icons.photo_size_select_actual_outlined,
-          color: Colors.white,
-          size: SizeConfig().heigth(context) * 0.04,
-        ),
-        Icon(
-          Icons.camera_alt_outlined,
-          color: Colors.white,
-          size: SizeConfig().heigth(context) * 0.04,
-        ),
-        Icon(
-          Icons.attach_file_outlined,
-          color: Colors.white,
-          size: SizeConfig().heigth(context) * 0.04,
-        ),
-        Icon(
-          Icons.mic_none_rounded,
-          color: Colors.white,
-          size: SizeConfig().heigth(context) * 0.04,
-        ),
-      ],
+          Icon(
+            Icons.photo_size_select_actual_outlined,
+            color: Colors.white,
+            size: SizeConfig().heigth(context) * 0.04,
+          ),
+          Icon(
+            Icons.camera_alt_outlined,
+            color: Colors.white,
+            size: SizeConfig().heigth(context) * 0.04,
+          ),
+          Icon(
+            Icons.attach_file_outlined,
+            color: Colors.white,
+            size: SizeConfig().heigth(context) * 0.04,
+          ),
+          Icon(
+            Icons.mic_none_rounded,
+            color: Colors.white,
+            size: SizeConfig().heigth(context) * 0.04,
+          ),
+        ],
+      ),
     );
   }
 }

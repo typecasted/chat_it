@@ -49,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           SignInButton(
             onTap: (){
-              Navigator.pushNamed(context, HomeScreen.id);
+              Navigator.pushReplacementNamed(context, HomeScreen.id);
             },
             gradient: SignUpButtonGradient,
             child: Center(

@@ -43,7 +43,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
           SignInButton(
             onTap: (){
-              Navigator.pushNamed(context, HomeScreen.id);
+              Navigator.pushReplacementNamed(context, HomeScreen.id);
             },
             gradient: SignInButtonGradient,
             child: Center(

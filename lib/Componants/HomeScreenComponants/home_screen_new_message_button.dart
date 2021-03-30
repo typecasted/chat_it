@@ -7,7 +7,7 @@ class NewMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: SizeConfig().heigth(context) * 0.03, right: SizeConfig().width(context) * 0.03),
+      padding: EdgeInsets.only(bottom: SizeConfig().heigth(context) * 0.02, right: SizeConfig().width(context) * 0.03),
       child: SizedBox(
         height: SizeConfig().heigth(context) * 0.09,
         width: SizeConfig().heigth(context) * 0.09,

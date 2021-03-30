@@ -23,12 +23,12 @@ class ChatScreenAppBar extends StatelessWidget {
             IconButton(
                 icon: Icon(Icons.arrow_back),
                 color: Colors.white,
-                highlightColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                hoverColor: Colors.transparent,
+                // highlightColor: Colors.transparent,
+                // focusColor: Colors.transparent,
+                // splashColor: Colors.transparent,
+                // hoverColor: Colors.transparent,
                 onPressed: (){
-
+                  // Navigator.popAndPushNamed(context, HomeScreen.id);
                 }),
 
             CircleAvatar(
