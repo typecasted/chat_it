@@ -15,6 +15,8 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           SignInButton(
             onTap: (){
+
               Navigator.pushReplacementNamed(context, HomeScreen.id);
             },
             gradient: SignUpButtonGradient,
