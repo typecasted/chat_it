@@ -4,9 +4,11 @@ import 'package:flutter/cupertino.dart';
 class SizeConfig{
 
   heigth(BuildContext context){
-    return MediaQuery.of(context).size.height;
+    final heigth = MediaQuery.of(context).size.height;
+    return heigth;
   }
   width(BuildContext context){
-    return MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
+    return width;
   }
 }

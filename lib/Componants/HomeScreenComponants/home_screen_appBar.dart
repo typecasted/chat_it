@@ -1,4 +1,7 @@
 
+import 'package:chat_it/screens/SignIn_Screen.dart';
+import 'package:chat_it/utils/shared_preferences.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,11 +26,18 @@ class HomeScreenAppBar extends StatelessWidget {
 
           Spacer(),
 
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: SizeConfig().width(context) * 0.07,
-            backgroundImage: AssetImage('image/myPic.jpeg'),
+          GestureDetector(
+            onTap: (){
+              FirebaseAuth.instance.signOut();
+              Navigator.pushReplacementNamed(context, SignInScreen.id);
+              setSignedIn(false);
+            },
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: SizeConfig().width(context) * 0.07,
+              backgroundImage: AssetImage('image/myPic.jpeg'),
 
+            ),
           ),
         ],
       ),

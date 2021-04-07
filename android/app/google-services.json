@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "764661002432",
+    "project_id": "chat--t-4a13f",
+    "storage_bucket": "chat--t-4a13f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764661002432:android:71815ac6a74b5e8911fd25",
+        "android_client_info": {
+          "package_name": "com.kunalp.chat_it"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764661002432-1vku6did4or1hdurckm9gb612j4d22if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBko6xtw3ceUDN68ZujkMVbogD4_XMuyLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764661002432-1vku6did4or1hdurckm9gb612j4d22if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

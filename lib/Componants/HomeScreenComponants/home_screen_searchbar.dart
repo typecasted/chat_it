@@ -14,7 +14,7 @@ class HomeScreenSearchBox extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: SizeConfig().heigth(context) * 0.01, horizontal: SizeConfig().width(context) * 0.03),
       child: Container(
-        height: SizeConfig().heigth(context) * 0.07,
+        height: SizeConfig().heigth(context) * 0.08,
         child: TextField(
           style: TextStyle(
               fontSize:SizeConfig().heigth(context) * 0.024,
