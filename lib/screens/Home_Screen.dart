@@ -3,6 +3,7 @@ import 'package:chat_it/Componants/HomeScreenComponants/home_screen_appBar.dart'
 import 'package:chat_it/Componants/HomeScreenComponants/home_screen_new_message_button.dart';
 import 'package:chat_it/Componants/HomeScreenComponants/home_screen_searchbar.dart';
 import 'package:chat_it/Componants/componants.dart';
+import 'package:chat_it/screens/Chat_Screen.dart';
 import 'package:chat_it/size_config.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -11,7 +12,7 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = 'home_screen';
-  @override
+  @override 
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -33,6 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: ListView(
                       children: [
                         ListTile(
+                          onTap: (){
+                            Navigator.pushNamed(context, ChatScreen.id);
+                          },
                           leading: CircleAvatar(
                             backgroundColor: Colors.white,
                             radius: SizeConfig().width(context) * 0.08,

@@ -4,7 +4,10 @@ class FireStoreMethods {
 
   // FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  uploadUserNameAndEmailToFireStore(UserInfoMap) async{
-    _firestore.collection('users').add(UserInfoMap);
+
+
+  uploadUserNameAndEmailToFireStore(userInfoMap) async{
+    _firestore.collection('users').add(userInfoMap);
   }
+
 }

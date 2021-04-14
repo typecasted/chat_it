@@ -1,7 +1,5 @@
 
-import 'package:chat_it/screens/SignIn_Screen.dart';
 import 'package:chat_it/utils/shared_preferences.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,8 +26,8 @@ class HomeScreenAppBar extends StatelessWidget {
 
           GestureDetector(
             onTap: (){
-              FirebaseAuth.instance.signOut();
-              Navigator.pushReplacementNamed(context, SignInScreen.id);
+              // FirebaseAuth.instance.signOut();
+              // Navigator.pushReplacementNamed(context, SignUpScreen.id);
               setSignedIn(false);
             },
             child: CircleAvatar(

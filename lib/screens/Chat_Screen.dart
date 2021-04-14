@@ -1,6 +1,4 @@
 
-
-
 import 'file:///C:/Users/Lenovo/AndroidStudioProjects/chat_it/lib/Componants/ChatScreenComponants/chat_screen_appBar.dart';
 import 'file:///C:/Users/Lenovo/AndroidStudioProjects/chat_it/lib/Componants/ChatScreenComponants/chat_screen_send_message_button.dart';
 import 'package:chat_it/Componants/ChatScreenComponants/chat_screen_chatBox_panel.dart';

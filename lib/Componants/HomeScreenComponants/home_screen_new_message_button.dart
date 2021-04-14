@@ -1,3 +1,4 @@
+import 'package:chat_it/screens/create_new_message_screen.dart';
 import 'package:chat_it/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class NewMessage extends StatelessWidget {
         // new message floating button
         child: FloatingActionButton(
           onPressed: (){
-
+            Navigator.pushNamed(context, CreateNewMessageScreen.id);
           },
           backgroundColor: Colors.blueAccent,
           child: Icon(
@@ -26,3 +27,4 @@ class NewMessage extends StatelessWidget {
     );
   }
 }
+
