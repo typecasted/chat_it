@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
 
-      home: IsLoggedIn != null ? IsLoggedIn ? HomeScreen() : SignUpScreen() : Container(color: Color(0xFF102535),),
+      home: IsLoggedIn != null ? IsLoggedIn ? HomeScreen() : SignInScreen() : Container(color: Color(0xFF102535),),
 
       routes: {
         SignInScreen.id: (context) => SignInScreen(),

@@ -4,6 +4,7 @@
 import 'package:chat_it/Componants/componants.dart';
 import 'package:chat_it/screens/Home_Screen.dart';
 import 'package:chat_it/size_config.dart';
+import 'package:chat_it/utils/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -115,6 +116,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     if(value != null){
                       print('user is logged in!!!!');
                       Navigator.pushReplacementNamed(context, HomeScreen.id);
+                      setSignedIn(true);
                     }
                   });
                 },

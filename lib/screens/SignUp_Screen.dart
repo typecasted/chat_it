@@ -1,14 +1,15 @@
 
 import 'package:chat_it/Componants/Sign_In_Up_Componants/SignIn_Up%20Button.dart';
+import 'package:chat_it/Componants/Sign_In_Up_Componants/sign_up_inputField.dart';
 import 'package:chat_it/Componants/componants.dart';
-import 'package:chat_it/utils/shared_preferences.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chat_it/screens/OTPScreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:chat_it/utils/auth.dart';
+import 'package:chat_it/utils/firebase.dart';
 import '../size_config.dart';
-import 'Home_Screen.dart';
+import 'SignIn_Screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   static String id = 'sign_up_screen';
@@ -18,19 +19,25 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
 
+  // FirebaseAuth _auth = FirebaseAuth.instance;
   TextEditingController userNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
-  TextEditingController conPassController = TextEditingController();
+  TextEditingController numberController = TextEditingController();
+  FireStoreMethods _methods = FireStoreMethods();
+  String verificationCode;
 
-
-  FirebaseAuth _auth = FirebaseAuth.instance;
   // AuthMethods authMethods = AuthMethods();
+  bool userNameFieldIsEmpty = false;
+  bool numberFieldIsEmpty = false;
 
+  bool showError = false;
   bool showSpinner = false;
-  bool showPassError = false;
-  bool showEmailInUseError = false;
-  bool showWeakPassError = false;
+  bool showNumberInUseError = false;
+  bool numberNotInUse = true;
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,215 +61,73 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
             // text field for Username
-            Container(
-              width: SizeConfig().width(context) * 0.80,
-              height: SizeConfig().heigth(context) * 0.08,
-              child: TextField(
+            InputField(hintText: 'Username', controller: userNameController, textInputType: TextInputType.name,),
 
-
-                controller: userNameController,
-                obscureText: false,
-                style: textStyle.copyWith(
-                  fontSize: SizeConfig().heigth(context) * 0.025,
-                  color: Colors.blue.shade500,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'Username',
-                  hintStyle: textStyle.copyWith(
-                    fontSize: SizeConfig().heigth(context) * 0.02,
-                    color: Colors.blue.shade700,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-                ),
-              ),
-            ),
             SizedBox(
               height: SizeConfig().heigth(context) * 0.02,
             ),
+
             // text field for E-mail
-            // InputField(hintText: 'E-mail', pass: true, controller: email),
-            Container(
-              width: SizeConfig().width(context) * 0.80,
-              height: SizeConfig().heigth(context) * 0.08,
-              child: TextField(
-
-
-                controller: emailController,
-                obscureText: false,
-                style: textStyle.copyWith(
-                  fontSize: SizeConfig().heigth(context) * 0.025,
-                  color: Colors.blue.shade500,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'E-mail',
-                  hintStyle: textStyle.copyWith(
-                    fontSize: SizeConfig().heigth(context) * 0.02,
-                    color: Colors.blue.shade700,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: SizeConfig().heigth(context) * 0.02,
-            ),
-
-            // text field for Password
-            // InputField(hintText: 'Password', pass: true, controller: pass,),
-            Container(
-              width: SizeConfig().width(context) * 0.80,
-              height: SizeConfig().heigth(context) * 0.08,
-              child: TextField(
-                controller: passController,
-                obscureText: true,
-                style: textStyle.copyWith(
-                  fontSize: SizeConfig().heigth(context) * 0.025,
-                  color: Colors.blue.shade500,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  hintStyle: textStyle.copyWith(
-                    fontSize: SizeConfig().heigth(context) * 0.02,
-                    color: Colors.blue.shade700,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            InputField(hintText: 'Number', controller: numberController, textInputType: TextInputType.number,),
 
             SizedBox(
               height: SizeConfig().heigth(context) * 0.02,
             ),
 
-            // text field for Confirm Password
-            // InputField(hintText: 'Confirm Password', pass: true, controller: con_pass,),
-            Container(
-              width: SizeConfig().width(context) * 0.80,
-              height: SizeConfig().heigth(context) * 0.08,
-              child: TextField(
 
-                controller: conPassController,
-                obscureText: true,
-                style: textStyle.copyWith(
-                  fontSize: SizeConfig().heigth(context) * 0.025,
-                  color: Colors.blue.shade500,
-                ),
-                decoration: InputDecoration(
-
-                  hintText: 'Confirm Password',
-                  hintStyle: textStyle.copyWith(
-                    fontSize: SizeConfig().heigth(context) * 0.02,
-                    color: Colors.blue.shade700,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(
-              height: SizeConfig().heigth(context) * 0.02,
-            ),
             SignInButton(
               onTap: () async{
 
                 setState(() {
                   showSpinner  = true;
                 });
-                try{
-                  if(passController.text == conPassController.text){
 
-                    final signUpUser = await _auth.createUserWithEmailAndPassword(email: emailController.text, password: passController.text);
-
-                    if(signUpUser != null){
-                      Navigator.pushReplacementNamed(context, HomeScreen.id);
-                      Map<String, String> UserInfoMap = {
-                        'email' : emailController.text,
-                        'username' : userNameController.text,
-                      };
-
-                      setUserName(userNameController.text); 
-                      setEmail(emailController.text);
-                      FireStoreMethods().uploadUserNameAndEmailToFireStore(UserInfoMap);
-                    }
-                  } else{
+                if(numberController.text.isEmpty || userNameController.text.isEmpty){
+                  if(numberController.text.isEmpty){
                     setState(() {
-                      showPassError = true;
+                      numberFieldIsEmpty = true;
+                    });
+                  }
+                  if(userNameController.text.isEmpty){
+                    setState(() {
+                      userNameFieldIsEmpty = true;
+                    });
+                  }
+                }else{
+
+                  // after filling details it must not show errors.
+                  setState(() {
+                    numberFieldIsEmpty = false;
+                  });
+                  setState(() {
+                    userNameFieldIsEmpty = false;
+                  });
+                  QuerySnapshot query = await FirebaseFirestore.instance.collection('users').where('number', isEqualTo: numberController.text).get();
+
+                  if(query.docs.isEmpty){
+                    print("it's null.");
+                    print(query.docs.toString());
+
+                    Map<String, String> userInfoMap = {
+                      'number' : numberController.text,
+                      'username' : userNameController.text
+                    };
+
+
+                    _methods.uploadUserNameAndEmailToFireStore(userInfoMap);
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OTPScreen(numberController.text)));
+                  }
+                  else{
+                    print("it's not null bro!!!!!!!!!!!!!!!!!!!!!!");
+                    print(query.docs.toString());
+                    setState(() {
+                      showNumberInUseError = true;
                     });
                   }
 
-                } on FirebaseAuthException catch (e) {
-                  print(e.code);
-                  if(e.code == 'email-already-in-use'){
-                    setState(() {
-                      showEmailInUseError = true;
-                    });
-                  }
 
-                  if(e.code == 'weak-password'){
-                    setState(() {
-                      showWeakPassError = true;
-                    });
-                  }
+
+
                 }
 
                 setState(() {
@@ -282,26 +147,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
 
-            showPassError ? Padding(
-              padding: EdgeInsets.all(SizeConfig().heigth(context) * 0.05),
+
+            showNumberInUseError ? Padding(
+              padding: EdgeInsets.only(top: SizeConfig().heigth(context) * 0.05, left: SizeConfig().heigth(context) * 0.05, right: SizeConfig().heigth(context) * 0.05),
 
               child: Center(
                 child: Text(
-                  'Passwords are not same.',
-                  style: textStyle.copyWith(
-                    fontSize: SizeConfig().heigth(context) * 0.025,
-                    color: Colors.red,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ) : Container(),
-            showEmailInUseError ? Padding(
-              padding: EdgeInsets.all(SizeConfig().heigth(context) * 0.05),
-
-              child: Center(
-                child: Text(
-                  'Given E-mail is in already use.',
+                  'Given Number is in already use.',
                   style: textStyle.copyWith(
                     fontSize: SizeConfig().heigth(context) * 0.025,
                     color: Colors.red,
@@ -311,12 +163,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ) : Container(),
 
-            showWeakPassError ? Padding(
-              padding: EdgeInsets.all(SizeConfig().heigth(context) * 0.05),
+            userNameFieldIsEmpty ? Padding(
+              padding: EdgeInsets.only(top: SizeConfig().heigth(context) * 0.05, left: SizeConfig().heigth(context) * 0.05, right: SizeConfig().heigth(context) * 0.05),
 
               child: Center(
                 child: Text(
-                  'Entered Password is weak.',
+                  'Enter Username',
                   style: textStyle.copyWith(
                     fontSize: SizeConfig().heigth(context) * 0.025,
                     color: Colors.red,
@@ -325,6 +177,40 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ) : Container(),
+
+            numberFieldIsEmpty ? Padding(
+              padding: EdgeInsets.only(top: SizeConfig().heigth(context) * 0.05, left: SizeConfig().heigth(context) * 0.05, right: SizeConfig().heigth(context) * 0.05),
+
+              child: Center(
+                child: Text(
+                  'Enter Phone number',
+                  style: textStyle.copyWith(
+                    fontSize: SizeConfig().heigth(context) * 0.025,
+                    color: Colors.red,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ) : Container(),
+
+
+            Padding(
+              padding: showError ? EdgeInsets.all(0) : EdgeInsets.only(top: SizeConfig().heigth(context) * 0.05, left: SizeConfig().heigth(context) * 0.05, right: SizeConfig().heigth(context) * 0.05),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.pushReplacementNamed(context, SignInScreen.id);
+                },
+                child: Container(
+                  child: Text(
+                    'Already have account',
+                    style: textStyle.copyWith(
+                      fontSize: SizeConfig().heigth(context) * 0.02,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
           ],
         ),
       ),
