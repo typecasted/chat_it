@@ -5,6 +5,7 @@ import 'package:chat_it/Componants/HomeScreenComponants/home_screen_searchbar.da
 import 'package:chat_it/Componants/componants.dart';
 import 'package:chat_it/screens/Chat_Screen.dart';
 import 'package:chat_it/size_config.dart';
+import 'package:chat_it/utils/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -22,6 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     print(FirebaseAuth.instance.currentUser.uid);
+    // getUserName().then((value) => print(value));
+    getNumber().then((value) => print(value));
     super.initState();
   }
   @override
@@ -54,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: textStyle.copyWith(fontSize: SizeConfig().heigth(context) * 0.027),
                           ),
 
-                          subtitle: Text(
+                          subtitle: Text (
                             'Hello...',
                             style: textStyle.copyWith(fontSize: SizeConfig().heigth(context) * 0.017),
                           ),

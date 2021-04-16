@@ -9,7 +9,7 @@ TextStyle textStyle =  TextStyle(
     fontFamily: 'Schyler'
 );
 
-LinearGradient SignInButtonGradient = LinearGradient(
+LinearGradient signInButtonGradient = LinearGradient(
   colors: [
     Colors.deepPurpleAccent.shade200,
     Colors.blueAccent.shade200,
@@ -17,7 +17,7 @@ LinearGradient SignInButtonGradient = LinearGradient(
   ],
 );
 
-LinearGradient SignUpButtonGradient = LinearGradient(
+LinearGradient signUpButtonGradient = LinearGradient(
   colors: [
     Colors.blue,
     Colors.blueAccent.shade200,

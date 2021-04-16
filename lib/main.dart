@@ -4,7 +4,6 @@ import 'package:chat_it/screens/SignIn_Screen.dart';
 import 'package:chat_it/screens/SignUp_Screen.dart';
 import 'package:chat_it/screens/create_new_message_screen.dart';
 import 'package:chat_it/utils/shared_preferences.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,7 +27,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  bool IsLoggedIn;
+  bool isLoggedIn;
   @override
   void initState() {
     getLoggedInInfo();
@@ -39,7 +38,7 @@ class _MyAppState extends State<MyApp> {
   getLoggedInInfo() async{
     await checkIsSignedIn().then((value) {
       setState(() {
-        IsLoggedIn = value;
+        isLoggedIn = value;
       });
     });
   }
@@ -52,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
 
-      home: IsLoggedIn != null ? IsLoggedIn ? HomeScreen() : SignInScreen() : Container(color: Color(0xFF102535),),
+      home: isLoggedIn != null ? isLoggedIn ? HomeScreen() : SignInScreen() : Container(color: Color(0xFF102535),),
 
       routes: {
         SignInScreen.id: (context) => SignInScreen(),

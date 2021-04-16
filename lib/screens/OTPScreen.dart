@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
 class OTPScreen extends StatefulWidget {
+
   String phoneNo;
   OTPScreen(this.phoneNo);
   @override
@@ -116,6 +117,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     if(value != null){
                       print('user is logged in!!!!');
                       Navigator.pushReplacementNamed(context, HomeScreen.id);
+                      setNumber(widget.phoneNo);
                       setSignedIn(true);
                     }
                   });

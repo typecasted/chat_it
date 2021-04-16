@@ -98,7 +98,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   showSpinner = false;
                 });
               },
-              gradient: SignInButtonGradient,
+              gradient: signInButtonGradient,
               child: Center(
                 child: Text(
                   "Sign In",

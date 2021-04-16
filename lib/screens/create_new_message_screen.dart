@@ -11,6 +11,7 @@ class CreateNewMessageScreen extends StatefulWidget {
 }
 
 class _CreateNewMessageScreenState extends State<CreateNewMessageScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +45,13 @@ class _CreateNewMessageScreenState extends State<CreateNewMessageScreen> {
               ),
             ),
             FindUserTextField(),
+
           ],
         ),
       ),
     );
   }
 }
+
 
 

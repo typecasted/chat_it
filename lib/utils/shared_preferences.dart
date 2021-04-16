@@ -2,9 +2,9 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-setSignedIn(bool IsSignedIn) async{
+setSignedIn(bool isSignedIn) async{
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  preferences.setBool('IsSignedIn', IsSignedIn);
+  preferences.setBool('IsSignedIn', isSignedIn);
 }
 
 setUserName(String userName) async{
@@ -12,15 +12,15 @@ setUserName(String userName) async{
   preferences.setString('Username', userName);
 }
 
-setEmail(String email) async{
+setNumber(String number) async{
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  preferences.setString('email', email);
+  preferences.setString('number', number);
 }
 
 Future<bool> checkIsSignedIn() async{
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  bool IsSignedIn = preferences.getBool('IsSignedIn') ?? false;
-  return IsSignedIn;
+  bool isSignedIn = preferences.getBool('IsSignedIn') ?? false;
+  return isSignedIn;
 }
 
 Future<String> getUserName() async{
@@ -29,8 +29,8 @@ Future<String> getUserName() async{
   return userName;
 }
 
-Future<String> getEmail() async{
+Future<String> getNumber() async{
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  String userName = preferences.getString('email');
+  String userName = preferences.getString('number');
   return userName;
 }

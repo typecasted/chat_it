@@ -3,11 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class FireStoreMethods {
 
   // FirebaseAuth _auth = FirebaseAuth.instance;
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
+  FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
   uploadUserNameAndEmailToFireStore(userInfoMap) async{
-    _firestore.collection('users').add(userInfoMap);
+    _fireStore.collection('users').add(userInfoMap);
   }
 
 }

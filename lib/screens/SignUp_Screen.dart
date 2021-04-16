@@ -3,11 +3,12 @@ import 'package:chat_it/Componants/Sign_In_Up_Componants/SignIn_Up%20Button.dart
 import 'package:chat_it/Componants/Sign_In_Up_Componants/sign_up_inputField.dart';
 import 'package:chat_it/Componants/componants.dart';
 import 'package:chat_it/screens/OTPScreen.dart';
+import 'package:chat_it/utils/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:chat_it/utils/firebase.dart';
+import 'package:chat_it/utils/firestore_methods.dart';
 import '../size_config.dart';
 import 'SignIn_Screen.dart';
 
@@ -116,6 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                     _methods.uploadUserNameAndEmailToFireStore(userInfoMap);
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OTPScreen(numberController.text)));
+                    setUserName(userNameController.text);
                   }
                   else{
                     print("it's not null bro!!!!!!!!!!!!!!!!!!!!!!");
@@ -135,7 +137,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 });
 
               },
-              gradient: SignUpButtonGradient,
+              gradient: signUpButtonGradient,
               child: Center(
                 child: Text(
                   "Sign Up",
